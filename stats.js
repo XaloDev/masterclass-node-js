@@ -1,5 +1,6 @@
 const os = require('os')
 const { freemem, totalmem } = os
+const log = require('./logger')
 
 setInterval(() => {
     const using = parseInt(totalmem() / 1024 / 1024) - parseInt(freemem() / 1024 / 1024)
@@ -17,7 +18,9 @@ setInterval(() => {
     console.clear()
     console.log("=== PC STATS ===")
     console.table(stats)
-    
+
+    log(`${JSON.stringify(stats)}\n`)
+
 }, 1000)
 
 
